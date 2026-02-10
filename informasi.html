@@ -2,107 +2,151 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Informasi - Bagan Pertandingan</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; }
-    body { font-family: 'Poppins', sans-serif; margin:0; background:#f7f7f8; color:#222; }
-
-    header {
-      background: #050724;
-      color: white;
-      padding: 30px 20px;
-      text-align: center;
+    :root{
+      --primary-dark:#050724;
+      --accent:#c76c12;
+      --banner:#e63946;
+      --white:#ffffff;
     }
-    .logo { width: 120px; margin-bottom: 10px; }
-    header h1 { font-size: 26px; margin: 10px 0 5px; font-weight: 600; }
-    .subtitle { font-size: 18px; font-weight: 400; color: #ddd; margin: 0; }
-
-    /* Navigasi seragam */
-    nav {
-      background: linear-gradient(90deg, #c76c12, #e08a2f); /* gradasi oranye */
-      padding: 10px;
-      text-align: center;
-    }
-    nav a {
-      color: #fff;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    nav a.active {
-      text-decoration: underline;
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Poppins',sans-serif;
+      background:#f9f9f9;
+      color:#333;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
 
-    .container { padding:18px; max-width:1400px; margin:0 auto; }
-    .title { font-size:20px; margin-bottom:12px; color:#050724; text-align:center; }
+    /* Header identik */
+    header{
+      background:var(--primary-dark);
+      color:var(--white);
+      padding:20px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:15px;
+      flex-wrap:wrap;
+      text-align:center;
+    }
+    .logo{width:200px;height:auto;display:block}
+    .text-container{display:flex;flex-direction:column;align-items:center}
+    header h1{font-size:20px;color:var(--white);margin-bottom:4px;font-weight:600}
+    header .subtitle{font-size:16px;color:#ddd}
 
-    .embed-outer {
+    /* Nav seragam */
+    nav{
+      background:var(--accent);
+      padding:10px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:12px;
+      white-space:nowrap;
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+    }
+    nav a{
+      color:var(--white);
+      text-decoration:none;
+      font-weight:600;
+      padding:6px 8px;
+      display:inline-block;
+      line-height:1;
+    }
+    nav a.active{border-bottom:2px solid var(--white);font-weight:700}
+    nav a:hover{color:yellow}
+
+    /* Banner */
+    .banner{
+      background:var(--banner);
+      color:var(--white);
+      text-align:center;
+      padding:15px;
+      font-size:18px;
+      font-weight:500;
+    }
+
+    /* Konten utama */
+    section{padding:30px 20px}
+    section h2{font-family:'Roboto Slab',serif;font-size:24px;margin-bottom:20px;color:var(--primary-dark);text-align:center}
+
+    .embed-outer{
       width:100%;
       max-width:1200px;
       margin:18px auto;
       border-radius:10px;
       overflow:hidden;
       background:#fff;
-      box-shadow:0 8px 24px rgba(0,0,0,0.08);
+      box-shadow:0 4px 12px rgba(0,0,0,0.1);
     }
-    .embed-viewport {
+    .embed-viewport{
       width:100%;
-      height: calc(var(--iframe-height) * var(--scale));
+      height:calc(var(--iframe-height) * var(--scale));
       position:relative;
       overflow:hidden;
       background:#fff;
     }
-    .scale-wrap {
-      width: var(--iframe-width);
-      height: var(--iframe-height);
-      transform-origin: 0 0;
-      transform: scale(var(--scale));
+    .scale-wrap{
+      width:var(--iframe-width);
+      height:var(--iframe-height);
+      transform-origin:0 0;
+      transform:scale(var(--scale));
     }
-    .sheet-iframe {
-      width: var(--iframe-width);
-      height: var(--iframe-height);
+    .sheet-iframe{
+      width:var(--iframe-width);
+      height:var(--iframe-height);
       border:0;
       display:block;
     }
 
-    footer {
-      background: #050724;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      margin-top: 10px;
-    }
+    footer{background:var(--primary-dark);color:var(--white);text-align:center;padding:20px;font-size:14px;margin-top:40px}
 
-    /* Responsif untuk layar kecil */
-    :root {
-      --scale: 0.64;
-      --iframe-width: 2200px;
-      --iframe-height: 750px;
+    /* Responsif */
+    :root{
+      --scale:0.64;
+      --iframe-width:2200px;
+      --iframe-height:750px;
     }
-    @media (max-width:900px) {
-      :root {
-        --scale: 0.42; /* cukup kecil agar muat di layar HP */
-        --iframe-width: 2200px;
-        --iframe-height: 800px;
+    @media(max-width:900px){
+      :root{
+        --scale:0.42;
+        --iframe-width:2200px;
+        --iframe-height:800px;
       }
-      .embed-viewport {
-        height: calc(var(--iframe-height) * var(--scale));
-      }
+      .embed-viewport{height:calc(var(--iframe-height) * var(--scale))}
+    }
+    @media(max-width:600px){
+      .logo{width:150px}
+      header h1{font-size:18px}
+      header .subtitle{font-size:14px}
+      nav{gap:8px}
+      nav a{font-size:16px;padding:5px 6px}
+    }
+    @media(max-width:360px){
+      nav{gap:6px}
+      nav a{font-size:15px;padding:4px 6px}
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="Logo Tim" class="logo">
-    <h1>Informasi</h1>
-    <p class="subtitle">Anugerah Creative Team</p>
+    <a href="index.html"><img src="logo.png" alt="Logo Tim" class="logo"></a>
+    <div class="text-container">
+      <h1>Informasi</h1>
+      <p class="subtitle">Anugerah Creative Team</p>
+    </div>
   </header>
 
-  <!-- Navigasi seragam -->
+  <div class="banner">
+    <p>Silahkan pilih bagan pertandingan yang ingin Anda lihat!</p>
+  </div>
+
   <nav>
     <a href="index.html">Beranda</a>
     <a href="tentang.html">Tentang</a>
@@ -110,67 +154,31 @@
     <a href="informasi.html" class="active">Informasi</a>
   </nav>
 
-  <div class="container">
-    <div class="title">Silahkan Pilih Bagan Pertandingan !</div>
-
-    <!-- Tab menu -->
-    <div class="tab-menu">
-      <button class="tab-button active" onclick="showBagan('gaplek', event)">Gaplek</button>
-      <button class="tab-button" onclick="showBagan('joker', event)">Joker</button>
-      <button class="tab-button" onclick="showBagan('ludo', event)">Ludo King</button>
-    </div>
-
-    <!-- Bagan Gaplek -->
-    <div id="bagan-gaplek" class="bagan-content active">
-      <div class="embed-outer">
-        <div class="embed-viewport">
-          <div class="scale-wrap">
-            <iframe class="sheet-iframe"
-              src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTS2Dzb4FIAeJN4z87Vdc4-b71GC8YEQzm5XtrFa3tcErO16i0AiiN3bkeeFKi03w/pubhtml?gid=810801533&single=true"
-              title="Bagan Gaplek" loading="lazy"></iframe>
-          </div>
+  <section>
+    <h2>Bagan Pertandingan</h2>
+    <div class="embed-outer">
+      <div class="embed-viewport">
+        <div class="scale-wrap">
+          <iframe class="sheet-iframe"
+            src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTS2Dzb4FIAeJN4z87Vdc4-b71GC8YEQzm5XtrFa3tcErO16i0AiiN3bkeeFKi03w/pubhtml?gid=810801533&single=true"
+            title="Bagan Gaplek" loading="lazy"></iframe>
         </div>
       </div>
     </div>
-
-    <!-- Bagan Joker -->
-    <div id="bagan-joker" class="bagan-content">
-      <div class="embed-outer">
-        <div class="embed-viewport">
-          <div class="scale-wrap">
-            <iframe class="sheet-iframe"
-              src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTS2Dzb4FIAeJN4z87Vdc4-b71GC8YEQzm5XtrFa3tcErO16i0AiiN3bkeeFKi03w/pubhtml?gid=1763227762&single=true"
-              title="Bagan Joker" loading="lazy"></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Bagan Ludo King -->
-    <div id="bagan-ludo" class="bagan-content">
-      <div class="embed-outer">
-        <div class="embed-viewport">
-          <div class="scale-wrap">
-            <iframe class="sheet-iframe"
-              src="LINK_SPREADSHEET_LUDO"
-              title="Bagan Ludo King" loading="lazy"></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  </section>
 
   <footer>
     <p>&copy; 2026 Anugerah Creative Team | Dibuat dengan semangat dan dedikasi oleh Tim Kreatif.</p>
   </footer>
 
   <script>
-    function showBagan(id, event) {
-      document.querySelectorAll('.bagan-content').forEach(el => el.classList.remove('active'));
-      document.querySelectorAll('.tab-button').forEach(el => el.classList.remove('active'));
-      document.getElementById('bagan-' + id).classList.add('active');
-      event.target.classList.add('active');
-    }
+    // Tandai link aktif otomatis
+    const links=document.querySelectorAll('nav a');
+    links.forEach(link=>{
+      if(link.pathname===window.location.pathname){
+        link.classList.add('active');
+      }
+    });
   </script>
 </body>
 </html>
