@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tentang - Anugerah Creative Team</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --primary-dark:#050724;
+      --accent:#c76c12;
+      --banner:#e63946;
+      --white:#ffffff;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Poppins',sans-serif;
+      background:#f9f9f9;
+      color:#333;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* Header identik dengan index.html */
+    header{
+      background:var(--primary-dark);
+      color:var(--white);
+      padding:20px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:15px;
+      flex-wrap:wrap;
+      text-align:center;
+    }
+    .logo{width:200px;height:auto;display:block}
+    .text-container{display:flex;flex-direction:column;align-items:center}
+    header h1{font-size:20px;color:var(--white);margin-bottom:4px;font-weight:600}
+    header .subtitle{font-size:16px;color:#ddd}
+
+    /* Nav disamakan: flex, centered, no-wrap, overflow-x jika perlu */
+    nav{
+      background:var(--accent);
+      padding:10px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:12px;
+      white-space:nowrap;
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+    }
+    nav a{
+      color:var(--white);
+      text-decoration:none;
+      font-weight:600;
+      padding:6px 8px;
+      display:inline-block;
+      line-height:1;
+    }
+    nav a.active{border-bottom:2px solid var(--white);font-weight:700}
+    nav a:hover{color:yellow}
+
+    /* Banner */
+    .banner{
+      background:var(--banner);
+      color:var(--white);
+      text-align:center;
+      padding:15px;
+      font-size:18px;
+      font-weight:500;
+    }
+
+    /* Konten utama */
+    section{padding:40px 20px}
+    section h2{font-family:'Roboto Slab',serif;font-size:28px;margin-bottom:25px;color:var(--primary-dark);text-align:center}
+
+    .about{
+      max-width:800px;margin:0 auto 40px auto;padding:25px;background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    }
+    .about p{ text-align:justify;font-size:16px;line-height:1.8;color:#444;margin-bottom:15px }
+    .about p::first-line{font-weight:500}
+
+    .card-container{display:flex;flex-wrap:wrap;justify-content:center;gap:20px}
+    .card{background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.1);padding:20px;width:280px;transition:transform .3s,box-shadow .3s;border-top:6px solid transparent}
+    .card h3{margin-top:0;font-size:22px;font-weight:600}
+    .card p{font-size:15px;line-height:1.6;color:#555}
+    .card:hover{transform:translateY(-8px);box-shadow:0 8px 20px rgba(0,0,0,0.15)}
+    .card:nth-child(1){border-top-color:#ff6f61}
+    .card:nth-child(2){border-top-color:#2a9d8f}
+    .card:nth-child(3){border-top-color:#f4a261}
+
+    .slider{position:relative;max-width:400px;margin:40px auto;overflow:hidden;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.1)}
+    .slides{display:flex;transition:transform .5s ease-in-out}
+    .slides img{width:400px;height:225px;object-fit:cover}
+    .slider-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.5);color:#fff;border:none;padding:10px;cursor:pointer;border-radius:50%}
+    .prev{left:10px}.next{right:10px}
+
+    footer{background:var(--primary-dark);color:var(--white);text-align:center;padding:20px;font-size:14px;margin-top:40px}
+
+    /* Responsif mobile: samakan ukuran dan spacing dengan index */
+    @media (max-width:600px){
+      .logo{width:150px}
+      header{padding:20px}
+      header h1{font-size:18px}
+      header .subtitle{font-size:14px}
+      nav{padding:10px;gap:8px}
+      nav a{font-size:16px;padding:5px 6px}
+      .card{width:90%}
+      .slides img{width:100%;height:auto}
+    }
+    @media (max-width:360px){
+      nav{gap:6px}
+      nav a{font-size:15px;padding:4px 6px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html"><img src="logo.png" alt="Logo Tim" class="logo"></a>
+    <div class="text-container">
+      <h1>Tentang Kami</h1>
+      <p class="subtitle">Anugerah Creative Team</p>
+    </div>
+  </header>
+
+  <div class="banner">
+    <p>Mau tau lebih jauh tentang kami ?, Yuk simak uraian berikut !</p>
+  </div>
+
+  <nav>
+    <a href="index.html">Beranda</a>
+    <a href="tentang.html">Tentang</a>
+    <a href="kontak.html">Kontak</a>
+    <a href="informasi.html">Informasi</a>
+  </nav>
+
+  <section class="about">
+    <h2>Definisi Tim</h2>
+    <p>📌 Anugerah Creative Team adalah sebuah tim yang dibentuk oleh Bakopel Sektor Anugerah dengan tujuan utama untuk mengembangkan kreativitas, memperkuat kolaborasi, dan meningkatkan responsivitas dalam setiap kegiatan pelayanan. Kami percaya bahwa setiap individu memiliki potensi unik yang dapat digabungkan menjadi kekuatan besar untuk membangun persekutuan yang solid dan penuh semangat.</p>
+    <p>📌 Melalui berbagai program, kompetisi, dan workshop, kami berkomitmen menghadirkan pengalaman yang inspiratif serta berdampak positif bagi seluruh anggota jemaat. Tim ini tidak hanya menjadi wadah untuk berkreasi, tetapi juga tempat untuk belajar, bertumbuh, dan saling mendukung demi tercapainya visi bersama.</p>
+  </section>
+
+  <section>
+    <h2>Kekuatan Kami</h2>
+    <div class="card-container">
+      <div class="card">
+        <h3>🎨 Kreativitas</h3>
+        <p>Menciptakan berbagai aktivitas yang menarik perhatian umat dan membawa dampak positif dalam pembangunan persekutuan.</p>
+      </div>
+      <div class="card">
+        <h3>🤝 Kolaborasi</h3>
+        <p>Setiap orang memberi yang terbaik dari dirinya masing-masing dan menggabungkan itu dalam satu perpaduan kerjasama yang epic.</p>
+      </div>
+      <div class="card">
+        <h3>🏆 Responsif</h3>
+        <p>Cepat memberi respon terhadap berbagai tanggapan terutama yang berhubungan dengan kerja Tim.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Foto Anggota Tim</h2>
+    <div class="slider">
+      <div class="slides" id="slides">
+        <img src="foto1.jpeg" alt="Anggota 1">
+        <img src="foto2.jpg" alt="Anggota 2">
+        <img src="foto3.jpg" alt="Anggota 3">
+        <img src="foto4.jpg" alt="Anggota 4">
+        <img src="foto5.jpg" alt="Anggota 5">
+      </div>
+      <button class="slider-btn prev" onclick="prevSlide()">&#10094;</button>
+      <button class="slider-btn next" onclick="nextSlide()">&#10095;</button>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Anugerah Creative Team | Dibuat dengan semangat dan dedikasi oleh Tim Kreatif.</p>
+  </footer>
+
+  <script>
+    // Tandai link aktif berdasarkan pathname agar konsisten
+    const links = document.querySelectorAll('nav a');
+    links.forEach(link => {
+      if (link.pathname === window.location.pathname) {
+        link.classList.add('active');
+      }
+    });
+
+    // Slider sederhana (opsional)
+    const slides = document.getElementById('slides');
+    let index = 0;
+    function showSlide(i){
+      const count = slides.children.length;
+      if(i < 0) i = count - 1;
+      if(i >= count) i = 0;
+      index = i;
+      slides.style.transform = 'translateX(' + (-index * slides.clientWidth) + 'px)';
+    }
+    function prevSlide(){ showSlide(index - 1); }
+    function nextSlide(){ showSlide(index + 1); }
+    window.addEventListener('resize', () => showSlide(index));
+    // Inisialisasi
+    showSlide(0);
+  </script>
+</body>
+</html>

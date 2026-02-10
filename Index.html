@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ANUGERAH CREATIVE TEAM</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    header { background: #050724; color: white; padding: 20px; }
+    nav { background: #c76c12; padding: 10px; text-align: center; }
+    nav a { color: white; margin: 0 10px; text-decoration: none; }
+    footer { background: #f1f1f1; text-align: center; padding: 10px; }
+
+    .header-container { display: flex; align-items: center; justify-content: center; }
+    .logo { width: 200px; height: auto; margin-right: 15px; }
+    .text-container { display: flex; flex-direction: column; align-items: flex-start; }
+    .subtitle { font-size: 28px; color: #f0f0f0; margin: 0; }
+
+    .banner { background: #e63946; color: white; overflow: hidden; white-space: nowrap; }
+    .banner p { display: inline-block; padding-left: 100%; animation: scrollBanner 18s linear infinite; font-size: 20px; font-weight: bold; }
+    @keyframes scrollBanner { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+    .banner:hover p { animation-play-state: paused; }
+
+    nav a.active { font-weight: bold; border-bottom: 2px solid white; }
+    nav a:hover { color: yellow; }
+    .banner a:hover { color: yellow; }
+
+    .main-layout { display: flex; align-items: flex-start; padding: 20px; }
+    section { flex: 3; padding-right: 20px; }
+
+    .agenda {
+      flex: 1;
+      background: #fff;
+      border-left: 3px solid #c76c12;
+      padding: 15px;
+      box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+    .agenda h3 { margin-top: 0; color: #050724; text-align: center; }
+    .agenda ul { list-style: none; padding: 0; margin: 0; }
+    .agenda li {
+      background: #f9f9f9;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .agenda li span { display: block; font-weight: bold; color: #c76c12; }
+
+    /* Tombol segitiga kecil */
+    .agenda-toggle {
+      display: none;
+      position: fixed;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-top: 20px solid transparent;
+      border-bottom: 20px solid transparent;
+      border-left: 20px solid #c76c12;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    /* Responsif HP */
+    @media (max-width: 600px) {
+      .header-container { flex-direction: column; text-align: center; }
+      .text-container { align-items: center; }
+      .logo { margin: 0 0 10px 0; width: 150px; }
+      .subtitle { font-size: 20px; }
+      nav a { margin: 8px 5px; font-size: 16px; }
+      .banner p { font-size: 16px; }
+      .main-layout { flex-direction: column; }
+      section { padding-right: 0; }
+
+      .agenda {
+        position: fixed;
+        top: 0;
+        right: -220px; /* tersembunyi */
+        width: 200px;
+        height: 100%;
+        border-left: 3px solid #c76c12;
+        box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+        transition: right 0.3s ease-in-out;
+        border-radius: 0;
+        z-index: 999;
+      }
+      .agenda.show { right: 0; }
+
+      .agenda-toggle { display: block; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <a href="index.html"><img src="logo.png" alt="Logo Tim" class="logo"></a>
+      <div class="text-container">
+        <h1>Selamat Datang di Website</h1>
+        <p class="subtitle">Anugerah Creative Team</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="banner">
+    <p>
+      📢 Anugerah Competition's terselenggara pada 14-17 Februari 2026. Segera daftarkan diri Anda dengan
+      <a href="https://forms.gle/rBK1ECpwHXHfiv3w7" target="_blank" style="color:white; text-decoration:underline;">
+        Klik Disini !
+      </a>
+    </p>
+  </div>
+
+  <nav>
+    <a href="index.html" class="active">Beranda</a>
+    <a href="tentang.html">Tentang</a>
+    <a href="kontak.html">Kontak</a>
+    <a href="informasi.html">Informasi</a>
+  </nav>
+
+  <div class="main-layout">
+    <section>
+      <h3>Halo!</h3>
+      <p>Website ini sedang dalam pengembangan. Nantikan informasi terbaru dari Anugerah Creative Team.</p>
+    </section>
+
+    <aside class="agenda" id="agendaBox">
+      <h3>Agenda 📅</h3>
+      <ul>
+        <li><span>14 Feb 2026</span> Pembukaan Kompetisi dan Perlombaan 🎉</li>
+        <li><span>15 Feb 2026</span> Babak Penyisihan I 📚</li>
+        <li><span>16 Feb 2026</span> Babak Penyisihan Lanjutan ⚔️</li>
+        <li><span>17 Feb 2026</span> Final & Pengumuman 🏆</li>
+      </ul>
+    </aside>
+  </div>
+
+  <!-- Tombol segitiga -->
+  <div class="agenda-toggle" id="toggleAgenda"></div>
+
+  <footer>
+    <p>&copy; 2026 Anugerah Creative Team</p>
+  </footer>
+
+  <script>
+    const links = document.querySelectorAll("nav a");
+    links.forEach(link => {
+      if(link.href === window.location.href){
+        link.classList.add("active");
+      }
+    });
+
+    const toggleBtn = document.getElementById("toggleAgenda");
+    const agendaBox = document.getElementById("agendaBox");
+
+    toggleBtn.addEventListener("click", () => {
+      agendaBox.classList.toggle("show");
+    });
+  </script>
+</body>
+</html>
