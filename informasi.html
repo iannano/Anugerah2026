@@ -12,17 +12,13 @@
       --accent:#c76c12;
       --banner:#e63946;
       --white:#ffffff;
+      --scale:0.64;
+      --iframe-width:2200px;
+      --iframe-height:750px;
     }
     *{box-sizing:border-box;margin:0;padding:0}
-    body{
-      font-family:'Poppins',sans-serif;
-      background:#f9f9f9;
-      color:#333;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-    }
+    body{font-family:'Poppins',sans-serif;background:#f9f9f9;color:#333}
 
-    /* Header identik */
     header{
       background:var(--primary-dark);
       color:var(--white);
@@ -34,103 +30,50 @@
       flex-wrap:wrap;
       text-align:center;
     }
-    .logo{width:200px;height:auto;display:block}
+    .logo{width:200px;height:auto}
     .text-container{display:flex;flex-direction:column;align-items:center}
-    header h1{font-size:20px;color:var(--white);margin-bottom:4px;font-weight:600}
+    header h1{font-size:20px;margin-bottom:4px;font-weight:600}
     header .subtitle{font-size:16px;color:#ddd}
 
-    /* Nav seragam */
     nav{
       background:var(--accent);
       padding:10px;
       display:flex;
       justify-content:center;
-      align-items:center;
       gap:12px;
       white-space:nowrap;
       overflow-x:auto;
-      -webkit-overflow-scrolling:touch;
     }
-    nav a{
-      color:var(--white);
-      text-decoration:none;
-      font-weight:600;
-      padding:6px 8px;
-      display:inline-block;
-      line-height:1;
-    }
+    nav a{color:var(--white);text-decoration:none;font-weight:600;padding:6px 8px}
     nav a.active{border-bottom:2px solid var(--white);font-weight:700}
     nav a:hover{color:yellow}
 
-    /* Banner */
-    .banner{
-      background:var(--banner);
-      color:var(--white);
-      text-align:center;
-      padding:15px;
-      font-size:18px;
-      font-weight:500;
-    }
+    .banner{background:var(--banner);color:var(--white);text-align:center;padding:15px;font-size:18px;font-weight:500}
 
-    /* Konten utama */
     section{padding:30px 20px}
     section h2{font-family:'Roboto Slab',serif;font-size:24px;margin-bottom:20px;color:var(--primary-dark);text-align:center}
 
-    .embed-outer{
-      width:100%;
-      max-width:1200px;
-      margin:18px auto;
-      border-radius:10px;
-      overflow:hidden;
-      background:#fff;
-      box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    .tab-menu{text-align:center;margin-bottom:20px}
+    .tab-button{
+      background:var(--accent);color:#fff;border:none;
+      padding:10px 20px;margin:0 5px;cursor:pointer;
+      font-weight:600;border-radius:5px;
     }
-    .embed-viewport{
-      width:100%;
-      height:calc(var(--iframe-height) * var(--scale));
-      position:relative;
-      overflow:hidden;
-      background:#fff;
-    }
-    .scale-wrap{
-      width:var(--iframe-width);
-      height:var(--iframe-height);
-      transform-origin:0 0;
-      transform:scale(var(--scale));
-    }
-    .sheet-iframe{
-      width:var(--iframe-width);
-      height:var(--iframe-height);
-      border:0;
-      display:block;
-    }
+    .tab-button.active{background:var(--banner)}
+
+    .bagan-content{display:none}
+    .bagan-content.active{display:block}
+
+    .embed-outer{width:100%;max-width:1200px;margin:18px auto;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,0.1)}
+    .embed-viewport{width:100%;height:calc(var(--iframe-height) * var(--scale));overflow:hidden;background:#fff}
+    .scale-wrap{width:var(--iframe-width);height:var(--iframe-height);transform-origin:0 0;transform:scale(var(--scale))}
+    .sheet-iframe{width:var(--iframe-width);height:var(--iframe-height);border:0;display:block}
 
     footer{background:var(--primary-dark);color:var(--white);text-align:center;padding:20px;font-size:14px;margin-top:40px}
 
-    /* Responsif */
-    :root{
-      --scale:0.64;
-      --iframe-width:2200px;
-      --iframe-height:750px;
-    }
     @media(max-width:900px){
-      :root{
-        --scale:0.42;
-        --iframe-width:2200px;
-        --iframe-height:800px;
-      }
+      :root{--scale:0.42;--iframe-height:800px}
       .embed-viewport{height:calc(var(--iframe-height) * var(--scale))}
-    }
-    @media(max-width:600px){
-      .logo{width:150px}
-      header h1{font-size:18px}
-      header .subtitle{font-size:14px}
-      nav{gap:8px}
-      nav a{font-size:16px;padding:5px 6px}
-    }
-    @media(max-width:360px){
-      nav{gap:6px}
-      nav a{font-size:15px;padding:4px 6px}
     }
   </style>
 </head>
@@ -155,13 +98,48 @@
   </nav>
 
   <section>
-    <h2>Bagan Pertandingan</h2>
-    <div class="embed-outer">
-      <div class="embed-viewport">
-        <div class="scale-wrap">
-          <iframe class="sheet-iframe"
-            src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTS2Dzb4FIAeJN4z87Vdc4-b71GC8YEQzm5XtrFa3tcErO16i0AiiN3bkeeFKi03w/pubhtml?gid=810801533&single=true"
-            title="Bagan Gaplek" loading="lazy"></iframe>
+    <h2>Pilih Bagan Pertandingan</h2>
+    <div class="tab-menu">
+      <button class="tab-button active" onclick="showBagan('gaplek', event)">Gaplek</button>
+      <button class="tab-button" onclick="showBagan('joker', event)">Joker</button>
+      <button class="tab-button" onclick="showBagan('ludo', event)">Ludo King</button>
+    </div>
+
+    <!-- Bagan Gaplek -->
+    <div id="bagan-gaplek" class="bagan-content active">
+      <div class="embed-outer">
+        <div class="embed-viewport">
+          <div class="scale-wrap">
+            <iframe class="sheet-iframe"
+              src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTS2Dzb4FIAeJN4z87Vdc4-b71GC8YEQzm5XtrFa3tcErO16i0AiiN3bkeeFKi03w/pubhtml?gid=810801533&single=true"
+              title="Bagan Gaplek" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bagan Joker -->
+    <div id="bagan-joker" class="bagan-content">
+      <div class="embed-outer">
+        <div class="embed-viewport">
+          <div class="scale-wrap">
+            <iframe class="sheet-iframe"
+              src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTS2Dzb4FIAeJN4z87Vdc4-b71GC8YEQzm5XtrFa3tcErO16i0AiiN3bkeeFKi03w/pubhtml?gid=1763227762&single=true"
+              title="Bagan Joker" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bagan Ludo King -->
+    <div id="bagan-ludo" class="bagan-content">
+      <div class="embed-outer">
+        <div class="embed-viewport">
+          <div class="scale-wrap">
+            <iframe class="sheet-iframe"
+              src="LINK_SPREADSHEET_LUDO"
+              title="Bagan Ludo King" loading="lazy"></iframe>
+          </div>
         </div>
       </div>
     </div>
@@ -172,13 +150,12 @@
   </footer>
 
   <script>
-    // Tandai link aktif otomatis
-    const links=document.querySelectorAll('nav a');
-    links.forEach(link=>{
-      if(link.pathname===window.location.pathname){
-        link.classList.add('active');
-      }
-    });
+    function showBagan(id, event) {
+      document.querySelectorAll('.bagan-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-button').forEach(el => el.classList.remove('active'));
+      document.getElementById('bagan-' + id).classList.add('active');
+      event.target.classList.add('active');
+    }
   </script>
 </body>
 </html>
