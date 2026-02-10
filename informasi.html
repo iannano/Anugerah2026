@@ -7,12 +7,6 @@
   <title>Informasi - Bagan Pertandingan</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --scale: 0.64;
-      --iframe-width: 2200px;
-      --iframe-height: 750px;
-    }
-
     * { box-sizing: border-box; }
     body { font-family: 'Poppins', sans-serif; margin:0; background:#f7f7f8; color:#222; }
 
@@ -26,10 +20,23 @@
     header h1 { font-size: 26px; margin: 10px 0 5px; font-weight: 600; }
     .subtitle { font-size: 18px; font-weight: 400; color: #ddd; margin: 0; }
 
-    nav { background:#c76c12; padding:8px; text-align:center; }
-    nav a { color:#fff; margin:0 12px; text-decoration:none; font-weight:600; }
-    .container { padding:18px; max-width:1400px; margin:0 auto; }
+    /* Navigasi seragam */
+    nav {
+      background: linear-gradient(90deg, #c76c12, #e08a2f); /* gradasi oranye */
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    nav a.active {
+      text-decoration: underline;
+    }
 
+    .container { padding:18px; max-width:1400px; margin:0 auto; }
     .title { font-size:20px; margin-bottom:12px; color:#050724; text-align:center; }
 
     .embed-outer {
@@ -41,7 +48,6 @@
       background:#fff;
       box-shadow:0 8px 24px rgba(0,0,0,0.08);
     }
-
     .embed-viewport {
       width:100%;
       height: calc(var(--iframe-height) * var(--scale));
@@ -49,22 +55,18 @@
       overflow:hidden;
       background:#fff;
     }
-
     .scale-wrap {
       width: var(--iframe-width);
       height: var(--iframe-height);
       transform-origin: 0 0;
       transform: scale(var(--scale));
     }
-
     .sheet-iframe {
       width: var(--iframe-width);
       height: var(--iframe-height);
       border:0;
       display:block;
     }
-
-    .note { font-size:13px; color:#555; margin-top:12px; text-align:center; max-width:900px; margin-left:auto; margin-right:auto; }
 
     footer {
       background: #050724;
@@ -75,20 +77,15 @@
       margin-top: 10px;
     }
 
-    .tab-menu { text-align:center; margin:20px 0; }
-    .tab-button {
-      background:#c76c12; color:#fff; border:none;
-      padding:10px 20px; margin:0 5px; cursor:pointer;
-      font-weight:600; border-radius:5px;
-    }
-    .tab-button.active { background:#e63946; }
-    .bagan-content { display:none; }
-    .bagan-content.active { display:block; }
-
     /* Responsif untuk layar kecil */
+    :root {
+      --scale: 0.64;
+      --iframe-width: 2200px;
+      --iframe-height: 750px;
+    }
     @media (max-width:900px) {
       :root {
-        --scale: 0.27; /* lebih kecil agar muat di layar HP */
+        --scale: 0.42; /* cukup kecil agar muat di layar HP */
         --iframe-width: 2200px;
         --iframe-height: 800px;
       }
@@ -105,11 +102,12 @@
     <p class="subtitle">Anugerah Creative Team</p>
   </header>
 
+  <!-- Navigasi seragam -->
   <nav>
     <a href="index.html">Beranda</a>
     <a href="tentang.html">Tentang</a>
     <a href="kontak.html">Kontak</a>
-    <a href="informasi.html" style="text-decoration:underline">Informasi</a>
+    <a href="informasi.html" class="active">Informasi</a>
   </nav>
 
   <div class="container">
@@ -176,38 +174,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
