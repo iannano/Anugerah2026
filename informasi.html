@@ -18,13 +18,31 @@
     *{box-sizing:border-box;margin:0;padding:0}
     body{font-family:'Poppins',sans-serif;background:#f9f9f9;color:#333}
 
-    header{background:var(--primary-dark);color:var(--white);padding:20px;display:flex;align-items:center;justify-content:center;gap:15px;flex-wrap:wrap;text-align:center}
+    header{
+      background:var(--primary-dark);
+      color:var(--white);
+      padding:20px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:15px;
+      flex-wrap:wrap;
+      text-align:center;
+    }
     .logo{width:200px;height:auto}
     .text-container{display:flex;flex-direction:column;align-items:center}
     header h1{font-size:20px;margin-bottom:4px;font-weight:600}
     header .subtitle{font-size:16px;color:#ddd}
 
-    nav{background:var(--accent);padding:10px;display:flex;justify-content:center;gap:12px;white-space:nowrap;overflow-x:auto}
+    nav{
+      background:var(--accent);
+      padding:10px;
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      white-space:nowrap;
+      overflow-x:auto;
+    }
     nav a{color:var(--white);text-decoration:none;font-weight:600;padding:6px 8px}
     nav a.active{border-bottom:2px solid var(--white);font-weight:700}
     nav a:hover{color:yellow}
@@ -34,30 +52,37 @@
     section{padding:30px 20px}
     section h2{font-family:'Roboto Slab',serif;font-size:24px;margin-bottom:20px;color:var(--primary-dark);text-align:center}
 
-    .tab-menu{display:flex;justify-content:center;gap:10px;flex-wrap:nowrap;overflow-x:auto;margin-bottom:20px}
-    .tab-button{background:var(--accent);color:#fff;border:none;padding:10px 20px;cursor:pointer;font-weight:600;border-radius:5px;flex:0 0 auto}
+    /* Tab menu agar tombol sejajar */
+    .tab-menu{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:nowrap; /* cegah turun ke baris kedua */
+      overflow-x:auto;  /* jika layar sempit, bisa digeser horizontal */
+      margin-bottom:20px;
+    }
+    .tab-button{
+      background:var(--accent);color:#fff;border:none;
+      padding:10px 20px;cursor:pointer;
+      font-weight:600;border-radius:5px;
+      flex:0 0 auto; /* pastikan ukuran tombol tetap */
+    }
     .tab-button.active{background:var(--banner)}
 
     .bagan-content{display:none}
     .bagan-content.active{display:block}
 
     .embed-outer{width:100%;max-width:1200px;margin:18px auto;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,0.1)}
-    .embed-viewport{
-      width:100%;
-      aspect-ratio:16/9; /* paksa landscape */
-      background:#fff;
-      overflow:hidden;
-      position:relative;
-    }
+    .embed-viewport{width:100%;height:calc(var(--iframe-height) * var(--scale));overflow:hidden;background:#fff}
     .scale-wrap{width:var(--iframe-width);height:var(--iframe-height);transform-origin:0 0;transform:scale(var(--scale))}
     .sheet-iframe{width:var(--iframe-width);height:var(--iframe-height);border:0;display:block}
 
     footer{background:var(--primary-dark);color:var(--white);text-align:center;padding:20px;font-size:14px;margin-top:40px}
 
     @media(max-width:900px){
-      :root{--scale:0.35;--iframe-height:750px}
-      .embed-viewport{aspect-ratio:16/9;height:auto}
-      .tab-button{padding:8px 14px;font-size:14px}
+      :root{--scale:0.32;--iframe-height:800px}
+      .embed-viewport{height:calc(var(--iframe-height) * var(--scale))}
+      .tab-button{padding:8px 14px;font-size:14px} /* tombol lebih kecil di HP */
     }
   </style>
 </head>
